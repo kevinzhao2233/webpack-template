@@ -11,6 +11,10 @@
   "author": "kevinzhao2233",
   "license": "MIT",
   "private": false,
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "devDependencies": {
     "@babel/core": "^7.13.16",
     "@babel/preset-env": "^7.13.15",

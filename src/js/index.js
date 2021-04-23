@@ -1,5 +1,5 @@
-import '../assets/css/reset.css'
-import '../assets/scss/man.scss'
+import '../assets/style/reset.css'
+import '../assets/style/main.scss'
 
 const foo = () => {
   console.log('main js file')
