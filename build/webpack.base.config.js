@@ -1,3 +1,4 @@
+const appConf = require('../app.config')
 const path = require('path')
 const fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -20,11 +21,16 @@ const PAGES = fs
   .readdirSync(PAGES_DIR)
   .filter(fileName => fileName.endsWith('.html'))
 
+const ENTRY = {}
+Object.entries(appConf.pageEntry).forEach(item => {
+  ENTRY[item[0]] = `${PATHS.src}${item[1]}`
+})
+
 module.exports = {
   entry: {
-    app: `${PATHS.src}/js`
-    // 其他入口以以下形式写
-    // module: `${PATHS.src}/your-module.js`,
+    // 公共 js 入口文件
+    app: `${PATHS.src}/js`,
+    ...ENTRY
   },
 
   output: {
@@ -61,10 +67,6 @@ module.exports = {
 
   module: {
     rules: [
-      // {
-      //   test: /\.css$/i,
-      //   use: ['style-loader', 'css-loader']
-      // },
       {
         // JavaScript
         test: /\.js$/,
@@ -121,16 +123,16 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        // // Images:
-        // {
-        //   from: `${PATHS.src}/${PATHS.assets}img`,
-        //   to: `${PATHS.assets}img`
-        // },
-        // // Fonts:
-        // {
-        //   from: `${PATHS.src}/${PATHS.assets}fonts`,
-        //   to: `${PATHS.assets}fonts`
-        // },
+        // Images:
+        {
+          from: `${PATHS.src}/${PATHS.assets}img`,
+          to: `${PATHS.assets}img`
+        },
+        // Fonts:
+        {
+          from: `${PATHS.src}/${PATHS.assets}fonts`,
+          to: `${PATHS.assets}fonts`
+        },
         // Static (copy to '/'):
         {
           from: `${PATHS.src}/static`,
@@ -149,7 +151,7 @@ module.exports = {
           filename: `./${page}`,
           title: pageTitle,
           minify: false,
-          chunks: ['app']
+          chunks: ['app', page.replace('.html', '')]
         })
     )
   ]
