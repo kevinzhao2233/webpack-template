@@ -10,6 +10,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,
     port: 10001,
+    hot: true,
+    inline: true,
     overlay: {
       errors: true
     }
@@ -17,7 +19,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 })
 

@@ -21,6 +21,7 @@ const PAGES = fs
   .readdirSync(PAGES_DIR)
   .filter(fileName => fileName.endsWith('.html'))
 
+// 生成入口文件映射关系，具体在 app.config.js 中配置
 const ENTRY = {}
 Object.entries(appConf.pageEntry).forEach(item => {
   ENTRY[item[0]] = `${PATHS.src}${item[1]}`
@@ -60,13 +61,18 @@ module.exports = {
 
   resolve: {
     alias: {
-      '~': PATHS.src, // Example: import Dog from "~/assets/img/dog.jpg"
-      '@': `${PATHS.src}/js` // Example: import Sort from "@/utils/sort.js"
+      '~': PATHS.src, // 例如: import Dog from "~/assets/img/dog.jpg"
+      '@': `${PATHS.src}/js` // 例如: import Sort from "@/utils/sort.js"
     }
   },
 
   module: {
     rules: [
+      {
+        // html
+        test: /\.html$/i,
+        loader: 'html-loader'
+      },
       {
         // JavaScript
         test: /\.js$/,
@@ -76,46 +82,28 @@ module.exports = {
       {
         // Images
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource'
+        type: 'asset/resource',
+        generator: {
+          filename: 'img/[name]-[hash][ext][query]'
+        }
       },
       {
         // Fonts
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource'
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name]-[hash][ext][query]'
+        }
       },
       {
         // scss
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: { sourceMap: true }
-          },
-          {
-            loader: 'postcss-loader',
-            options: { sourceMap: true }
-          },
-          {
-            loader: 'sass-loader',
-            options: { sourceMap: true }
-          }
-        ]
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         // css
         test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: { sourceMap: true }
-          },
-          {
-            loader: 'postcss-loader',
-            options: { sourceMap: true }
-          }
-        ]
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       }
     ]
   },
@@ -123,17 +111,6 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        // Images:
-        {
-          from: `${PATHS.src}/${PATHS.assets}img`,
-          to: `${PATHS.assets}img`
-        },
-        // Fonts:
-        {
-          from: `${PATHS.src}/${PATHS.assets}fonts`,
-          to: `${PATHS.assets}fonts`
-        },
-        // Static (copy to '/'):
         {
           from: `${PATHS.src}/static`,
           to: ''
