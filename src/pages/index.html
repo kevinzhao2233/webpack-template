@@ -7,6 +7,65 @@
   <title>Document</title>
 </head>
 <body>
-  hello
+  <div class="wrap">
+    <h1 id="使用图片">使用图片</h1>
+    <div class="brief">
+      <p>
+        webpack 4 时通常使用 copy-webpack-plugin 插件拷贝资源到目标文件夹。
+      </p>
+      <p>
+        webpack 5 内置了对资源的处理方式，配置时在
+        <code>module.rules</code>
+        中设置图片的 <code>type = 'asset/resource'</code>。
+      </p>
+      <p>
+        再配合 html-loader 和 css-loader 就可以在 HTML 和 CSS 文件中使用图片了。
+      </p>
+    </div>
+    <div class="preview">
+      <p>img 标签形式</p>
+      <img src="../assets/img/img.jpg" alt="图片" width="300" height="200">
+      <p>背景图片形式</p>
+      <div class="img-demo"></div>
+    </div>
+    <h1 id="引入字体">引入字体</h1>
+    <div class="brief">
+      <p>
+        对字体的处理与对图片的配置相同，这里只做展示即可。
+      </p>
+    </div>
+    <div class="preview">
+      <h2 class="font-pmzd font-demo">旁门正道标题体</h2>
+      <h2 class="font-zkkh font-demo">站酷酷黑体</h2>
+    </div>
+    <h1 id="scss">SCSS</h1>
+    <div class="brief">
+      <p>
+        对于 SCSS 文件的处理，需要经过 sass-loader、postcss-loader、css-loader、style-loader，
+        作用分别是将 SCSS 转化为 CSS、CSS 后处理（如进行 autoprefixer 处理等）、CSS 文件处理（如处理CSS 文件中的图片路径等）、
+        最后将生成的 CSS 代码放到 HTML 文件的 <code>style</code> 标签中
+      </p>
+    </div>
+    <div class="preview">
+      <p>
+        具体使用方式可以在项目中查看。
+      </p>
+    </div>
+    <h1 id="Babel">Babel</h1>
+    <div class="brief">
+      <p>
+        实际配置 Webpack 时只需要一个 babel-loader 即可，更多的是配置 .babelrc 文件，或者添加额外的 babel 插件。
+      </p>
+      <p>
+        babel 7 开始，很多配置都减少了，比如预设，只需要配置 <code>"presets": ["@babel/preset-env"]</code>，
+        再通过插件添加一些正在提案或者还未加入到 <code>@babel/preset-env</code> 中的功能即可。
+      </p>
+    </div>
+    <div class="preview">
+      <p>
+        具体使用方式可以在项目中查看。
+      </p>
+    </div>
+  </div>
 </body>
 </html>

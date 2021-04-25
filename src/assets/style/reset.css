@@ -1,14 +1,26 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 *::before,
 *::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
   height: 100%;
+}
+
+@font-face {
+  font-family: PMZD;
+  src: url(../fonts/PMZD.ttf);
+}
+
+@font-face {
+  font-family: ZKKH;
+  src: url(../fonts/ZKKH.ttf);
 }

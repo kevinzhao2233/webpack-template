@@ -1,8 +1,8 @@
 import '../assets/style/reset.css'
 import '../assets/style/main.scss'
 
-const foo = () => {
-  console.log('main js file')
-}
-
-foo()
+document.addEventListener('click', (e) => {
+  if (e.target.nodeName.toUpperCase() === 'H1') {
+    document.location.hash = e.target.id
+  }
+})
