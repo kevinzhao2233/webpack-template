@@ -1,4 +1,3 @@
-import '../assets/style/reset.css'
 import '../assets/style/main.scss'
 
 document.addEventListener('click', (e) => {

@@ -30,7 +30,7 @@ Object.entries(appConf.pageEntry).forEach(item => {
 module.exports = {
   entry: {
     // 公共 js 入口文件
-    app: `${PATHS.src}/js`,
+    common: `${PATHS.src}/js/common.js`,
     ...ENTRY
   },
 
@@ -128,7 +128,7 @@ module.exports = {
           filename: `./${page}`,
           title: pageTitle,
           minify: false,
-          chunks: ['app', page.replace('.html', '')]
+          chunks: ['common', page.replace('.html', '')]
         })
     )
   ]

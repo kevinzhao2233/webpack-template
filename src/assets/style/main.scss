@@ -9,6 +9,10 @@ body {
   scroll-behavior: smooth;
 }
 
+body {
+  background: linear-gradient(to right, #ffffff, 50%, #ffffff, 50%, $bg-clr);
+}
+
 .font-pmzd {
   font-family: PMZD;
 }
@@ -26,14 +30,14 @@ h1,
 .wrap {
   width: 1000px;
   min-height: 100vh;
-  padding-bottom: 100px;
+  padding: 0 20px 100px;
   margin: 0 auto;
   overflow: hidden;
   background: linear-gradient(to right, #ffffff, $brief-width, #ffffff, $brief-width, $bg-clr);
 
   & > *:not(.preview):not(h1) {
     float: left;
-    width: $brief-width;
+    width: $brief-width - 20px;
     clear: both;
   }
 
@@ -49,7 +53,7 @@ h1,
     color: #ffffff;
 
     .img-demo {
-      width: 500px;
+      width: auto;
       height: 200px;
       background: url('../img/img.jpg') center / contain no-repeat;
     }
@@ -57,6 +61,10 @@ h1,
     .font-demo {
       font-size: 40px;
       font-weight: normal;
+    }
+
+    a {
+      color: #ffffff;
     }
   }
 
