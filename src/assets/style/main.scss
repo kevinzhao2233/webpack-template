@@ -4,11 +4,10 @@ $bg-clr: #28895a;
 $code-clr: #28895a8c;
 $brief-width: 500px;
 
-
-html, body {
+html,
+body {
   scroll-behavior: smooth;
 }
-
 
 .font-pmzd {
   font-family: PMZD;
@@ -17,7 +16,6 @@ html, body {
 .font-zkkh {
   font-family: ZKKH;
 }
-
 
 body,
 h1,
@@ -30,13 +28,13 @@ h1,
   min-height: 100vh;
   padding-bottom: 100px;
   margin: 0 auto;
-  background: linear-gradient(to right, #ffffff, $brief-width, #ffffff, $brief-width, $bg-clr);
   overflow: hidden;
+  background: linear-gradient(to right, #ffffff, $brief-width, #ffffff, $brief-width, $bg-clr);
 
   & > *:not(.preview):not(h1) {
     float: left;
-    clear: both;
     width: $brief-width;
+    clear: both;
   }
 
   .brief {
@@ -45,11 +43,11 @@ h1,
 
   .preview {
     float: left;
-    clear: right;
     max-width: 50%;
-    color: #ffffff;
     padding: 0 20px;
-    
+    clear: right;
+    color: #ffffff;
+
     .img-demo {
       width: 500px;
       height: 200px;
@@ -57,30 +55,26 @@ h1,
     }
 
     .font-demo {
-      font-weight: normal;
       font-size: 40px;
+      font-weight: normal;
     }
   }
 
   h1 {
-    color: $font-color;
     padding: 30px 0 10px;
+    color: $font-color;
     cursor: pointer;
   }
 
   p {
-    text-align: justify;
     line-height: 1.8;
+    text-align: justify;
   }
 
   code {
     padding: 1px 4px;
-    border-radius: 3px;
-    background-color: $font-color;
     color: #ffffff;
+    background-color: $font-color;
+    border-radius: 3px;
   }
-
 }
-
-
-
