@@ -33,22 +33,23 @@ module.exports = {
     common: `${PATHS.src}/js/common.js`,
     ...ENTRY
   },
-
+  // 输出配置
   output: {
     filename: `${PATHS.assets}js/[name].[contenthash].js`,
     path: PATHS.dist,
-    clean: true
+    clean: true // 输出前清空目标文件夹
   },
-
+  // 向外的接口，相当于抛出一个对象
   externals: {
     paths: PATHS
   },
-
+  // 优化操作
   optimization: {
     moduleIds: 'deterministic',
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
+        // 第三方的包单独打包
         vendor: {
           name: 'vendors',
           test: /[\\/]node_modules[\\/]/,
@@ -109,6 +110,7 @@ module.exports = {
   },
 
   plugins: [
+    // 拷贝静态文件
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -118,8 +120,8 @@ module.exports = {
       ]
     }),
 
-    /*
-      自动创建 HTML
+    /**
+    * 自动导入并创建 HTML，用来支持多页面
     */
     ...PAGES.map(
       page =>

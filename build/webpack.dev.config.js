@@ -7,6 +7,7 @@ const baseWebpackConfig = require('./webpack.base.config')
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   devtool: 'eval-nosources-cheap-module-source-map',
+  // 开发服务器配置
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,
     port: 10001,

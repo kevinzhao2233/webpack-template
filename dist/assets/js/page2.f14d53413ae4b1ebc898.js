@@ -1,0 +1,1 @@
+(self.webpackChunkwebpack_template=self.webpackChunkwebpack_template||[]).push([[373],{661:function(){alert("这里是 page2 页面，点击确定后将返回到首页"),window.history.back()}},function(e){"use strict";e(e.s=661)}]);
