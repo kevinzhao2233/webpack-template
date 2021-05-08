@@ -30,4 +30,4 @@ jobs:
           # Git branch where assets will be deployed
           target_branch: master
           # Build directory to deploy
-          build_dir: dist
+          build_dir: /dist
